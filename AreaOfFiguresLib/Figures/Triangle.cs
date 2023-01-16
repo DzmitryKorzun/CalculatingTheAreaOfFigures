@@ -12,6 +12,9 @@ namespace AreaOfFiguresLib.Figures
         private readonly float sideA;
         private readonly float sideB;
         private readonly float sideC;
+        private readonly float squaredSideA;
+        private readonly float squaredSideB;
+        private readonly float squaredSideC;
         private const string argumentExceptionMessage = "There is no triangle with similar sides";
 
         private Triangle(float sideA, float sideB, float sideC)
@@ -19,20 +22,23 @@ namespace AreaOfFiguresLib.Figures
             this.sideA = sideA;
             this.sideB = sideB;
             this.sideC = sideC;
+            this.squaredSideA = MathF.Pow(sideA, 2);
+            this.squaredSideB = MathF.Pow(sideB, 2);
+            this.squaredSideC = MathF.Pow(sideC, 2);
         }
-
-        public static Triangle Create(float side_A, float side_B, float side_C)
+        /// <summary>
+        /// Creates a "Triangle" object on three sides
+        /// </summary>
+        /// <param name="sideA">Triangle side A</param>
+        /// <param name="sideB">Triangle side B</param>
+        /// <param name="sideC">Triangle side C</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static Triangle Create(float sideA, float sideB, float sideC)
         {
-            if (side_A + side_B > side_C && side_A + side_C > side_B && side_B + side_C > side_A)
+            if (CheckingTheCorrectnessOfArguments(sideA,sideB,sideC))
             {
-                if (side_A > 0 && side_B > 0 && side_C > 0)
-                {
-                    return new Triangle(side_A, side_B, side_C);
-                }
-                else
-                {
-                    throw new ArgumentException(argumentExceptionMessage);
-                }
+                return new Triangle(sideA, sideB, sideC);
             }
             else
             {
@@ -40,26 +46,48 @@ namespace AreaOfFiguresLib.Figures
             }
         }
 
-        public float Square()
+        public float GetArea()
         {
-            var squaredSide_A = MathF.Pow(sideA, 2);
-            var squaredSide_B = MathF.Pow(sideB, 2);
-            var squaredSide_C = MathF.Pow(sideC, 2);
-            if (squaredSide_A + squaredSide_B == squaredSide_C)
+            if (squaredSideA + squaredSideB == squaredSideC)
             {
                 return sideA * sideB / 2;
             }
-            else if (squaredSide_A + squaredSide_C == squaredSide_B)
+            else if (squaredSideA + squaredSideC == squaredSideB)
             { 
                 return sideA * sideC / 2;
             }
-            else if (squaredSide_B + squaredSide_C == squaredSide_A)
+            else if (squaredSideB + squaredSideC == squaredSideA)
             {
                 return sideB * sideC / 2;
             }
             var triangleHalfMeter = (sideA + sideB + sideC) / 2;
 
-            return MathF.Sqrt(triangleHalfMeter * (triangleHalfMeter - sideA) * (triangleHalfMeter - sideB) * (triangleHalfMeter - sideC));
+            return CalculationAreaAccordingToHeronsFormula();
         }
+
+        private static bool CheckingTheCorrectnessOfArguments(float sideA, float sideB, float sideC)
+        {
+            if (sideA + sideB > sideC &&
+                sideA + sideC > sideB &&
+                sideB + sideC > sideA &&
+                sideA > 0 &&
+                sideB > 0 &&
+                sideC > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }            
+        }
+
+        private float CalculationAreaAccordingToHeronsFormula()
+        {
+            var triangleHalfMeter = (sideA + sideB + sideC) / 2;
+            var result = MathF.Sqrt(triangleHalfMeter * (triangleHalfMeter - sideA) * (triangleHalfMeter - sideB) * (triangleHalfMeter - sideC));
+            return result;
+        }
+
     }
 }

@@ -16,7 +16,12 @@ namespace AreaOfFiguresLib.Figures
         {
             this.radius = radius;
         }
-
+        /// <summary>
+        /// Creates a circle based on its radius
+        /// </summary>
+        /// <param name="radius"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public static Circle Create(float radius)
         {
             if (radius > 0)
@@ -29,8 +34,7 @@ namespace AreaOfFiguresLib.Figures
             }
         }
 
-
-        public float Square()
+        public float GetArea()
         {
             return MathF.PI * MathF.Pow(radius, 2);
         }

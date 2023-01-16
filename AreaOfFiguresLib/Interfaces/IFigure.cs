@@ -8,7 +8,7 @@ namespace AreaOfFiguresLib.Interfaces
 {
     public interface IFigure
     {
-        public float Square();
+        public float GetArea();
 
     }
 }
