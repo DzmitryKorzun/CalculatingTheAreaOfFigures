@@ -33,7 +33,6 @@ namespace AreaOfFiguresLib.Figures
                 throw new ArgumentException(argumentExceptionMessage);
             }
         }
-
         public float GetArea()
         {
             return MathF.PI * MathF.Pow(radius, 2);

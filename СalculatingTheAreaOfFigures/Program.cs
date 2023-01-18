@@ -2,18 +2,79 @@
 
 try
 {
-    Console.WriteLine("Triangle 1 = " + Triangle.Create(6f, 5f, 4f).GetArea());
-    Console.WriteLine("Triangle 2 = " + Triangle.Create(2.7f, 5f, 4f).GetArea());
-    Console.WriteLine("Triangle 3 = " + Triangle.Create(2f, 5f, 4f).GetArea());
-    Console.WriteLine("Triangle 4 = " + Triangle.Create(6.5f, 5f, 4f).GetArea());
-    Console.WriteLine("Triangle 5 = " + Triangle.Create(7f, 8f, 9f).GetArea());
-    Console.WriteLine("Circle 1 = " + Circle.Create(8f).GetArea());
-    Console.WriteLine("Circle 2 = " + Circle.Create(4f).GetArea());
-    Console.WriteLine("Circle 3 = " + Circle.Create(2f).GetArea());
+    float sideA = 4f;
+    float sideB = 5f;
+    float sideC = 6f;
+    var triangle = Triangle.Create(sideA, sideB, sideC);
+    Console.WriteLine($"Создан треугольник со стронами {sideA},{sideB},{sideC}");
+    Console.WriteLine($"Площадь = {triangle.GetArea()}");
+    Console.WriteLine(triangle.IsRightTriangle() ? "Это прямоугольный треугольник" : "Это не прямоугольный треугольник");
+    Console.WriteLine("---------------------------------------------");
 }
 catch(Exception ex)
 {
     Console.WriteLine(ex.Message);
+    Console.WriteLine("---------------------------------------------");
 }
 
+try
+{
+    float sideA = 6f;
+    float sideB = 8f;
+    float sideC = 10f;
+    var triangle = Triangle.Create(sideA, sideB, sideC);
+    Console.WriteLine($"Создан треугольник со стронами {sideA},{sideB},{sideC}");
+    Console.WriteLine($"Площадь = {triangle.GetArea()}");
+    Console.WriteLine(triangle.IsRightTriangle() ? "Это прямоугольный треугольник" : "Это не прямоугольный треугольник");
+    Console.WriteLine("---------------------------------------------");
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+    Console.WriteLine("---------------------------------------------");
+}
 
+try
+{
+    float sideA = 1f;
+    float sideB = 2f;
+    float sideC = 6f;
+    var triangle = Triangle.Create(sideA, sideB, sideC);
+    Console.WriteLine($"Создан треугольник со стронами {sideA},{sideB},{sideC}");
+    Console.WriteLine($"Площадь = {triangle.GetArea()}");
+    Console.WriteLine(triangle.IsRightTriangle() ? "Это прямоугольный треугольник" : "Это не прямоугольный треугольник");
+    Console.WriteLine("---------------------------------------------");
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+    Console.WriteLine("---------------------------------------------");
+}
+
+try
+{
+    float radius = 4f;
+    var circle = Circle.Create(radius);
+    Console.WriteLine($"Создан круг радиусом {radius}");
+    Console.WriteLine($"Площадь = {circle.GetArea()}");
+    Console.WriteLine("---------------------------------------------");
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+    Console.WriteLine("---------------------------------------------");
+}
+
+try
+{
+    float radius = -4f;
+    var circle = Circle.Create(radius);
+    Console.WriteLine($"Создан круг радиусом {radius}");
+    Console.WriteLine($"Площадь = {circle.GetArea()}");
+    Console.WriteLine("---------------------------------------------");
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+    Console.WriteLine("---------------------------------------------");
+}

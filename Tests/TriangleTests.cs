@@ -58,5 +58,12 @@ namespace Tests
             var triangleObj = Triangle.Create(7, 8, 9);
             Assert.Equal(expectedArea, triangleObj.GetArea());            
         }
+        [Fact]
+        public void CreateEquilateralTriangle()
+        {
+            float expectedArea = 10.825317f;
+            var triangleObj = Triangle.Create(5, 5, 5);
+            Assert.Equal(expectedArea, triangleObj.GetArea());
+        }        
     }
 }
